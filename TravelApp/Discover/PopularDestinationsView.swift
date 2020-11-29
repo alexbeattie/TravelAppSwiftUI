@@ -57,7 +57,8 @@ struct PopularDestinationDetailsView: View {
     let destination: Destination
 
     @State var region: MKCoordinateRegion
-        
+    @State var isShowingAttractions = false
+    
     init(destination: Destination) {
         
         self.destination = destination
@@ -88,10 +89,33 @@ struct PopularDestinationDetailsView: View {
                 Text("Location").font(.system(size: 18, weight: .semibold))
 
                 Spacer()
+                Button(action: { isShowingAttractions.toggle() }, label: {
+                    Text("\(isShowingAttractions ? "Hide" : "Show") Attractions").font(.system(size: 14, weight: .semibold))
+                })
+                Toggle("", isOn: $isShowingAttractions).labelsHidden()
+                
             }.padding(.horizontal)
-            Map(coordinateRegion: $region).frame(height:200)
+            
+//            Map(coordinateRegion: $region).frame(height:300)
+            Map(coordinateRegion: $region, annotationItems: isShowingAttractions ? attractions : []) { attraction in
+                MapMarker(coordinate: .init(latitude: attraction.latitude, longitude: attraction.longitude), tint: .red)
+            }
+            .frame(height: 300)
+            
+            
         }.navigationBarTitle(destination.name, displayMode: .inline)
     }
+    let attractions:[Attraction] = [
+        .init(name: "Eifell Tower", latitude: 48.858546528170386, longitude: 2.2944330272730094),
+        .init(name: "Champs-Elysees", latitude: 48.866867, longitude: 2.311780),
+        .init(name: "Louvre Museum", latitude: 48.860288, longitude: 2.337789),
+        
+    ]
+}
+struct Attraction: Identifiable {
+    let id = UUID().uuidString
+    let name: String
+    let latitude, longitude: Double
 }
 struct PopularDestinationTile: View {
     let destination: Destination
