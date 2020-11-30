@@ -64,10 +64,14 @@ struct PopularDestinationDetailsView: View {
         self.destination = destination
         self._region = State(initialValue: MKCoordinateRegion(center: .init(latitude: destination.latitude, longitude: destination.longitude), span: .init(latitudeDelta: 0.1, longitudeDelta: 0.1)))
     }
-        
-    var body: some View {
+        var body: some View {
         ScrollView {
-            Image(destination.imageName).resizable().scaledToFill().frame(height:150).clipped()
+            DestinationHeaderContainer()
+//            Image(destination.imageName)
+//                .resizable()
+//                .scaledToFill()
+                .frame(height:250)
+//                .clipped()
             VStack(alignment: .leading) {
                 Text(destination.name)
                     .font(.system(size: 18, weight: .bold))

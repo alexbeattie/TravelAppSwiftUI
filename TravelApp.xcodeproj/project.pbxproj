@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		788AEAAA2575847E00A325AA /* DestinationHeaderContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788AEAA92575847E00A325AA /* DestinationHeaderContainer.swift */; };
 		78A6041125686E580085DE4A /* PopularDestinationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A6041025686E580085DE4A /* PopularDestinationsView.swift */; };
 		78A6041625686F710085DE4A /* PopularRestaurantsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A6041525686F710085DE4A /* PopularRestaurantsView.swift */; };
 		78A6041B25686FE60085DE4A /* DiscoverCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A6041A25686FE60085DE4A /* DiscoverCategoriesView.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		788AEAA92575847E00A325AA /* DestinationHeaderContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationHeaderContainer.swift; sourceTree = "<group>"; };
 		78A6041025686E580085DE4A /* PopularDestinationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularDestinationsView.swift; sourceTree = "<group>"; };
 		78A6041525686F710085DE4A /* PopularRestaurantsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularRestaurantsView.swift; sourceTree = "<group>"; };
 		78A6041A25686FE60085DE4A /* DiscoverCategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCategoriesView.swift; sourceTree = "<group>"; };
@@ -98,9 +100,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		788AEAA82575846600A325AA /* DestinationGroup */ = {
+			isa = PBXGroup;
+			children = (
+				788AEAA92575847E00A325AA /* DestinationHeaderContainer.swift */,
+			);
+			path = DestinationGroup;
+			sourceTree = "<group>";
+		};
 		78A6040925686CDE0085DE4A /* Discover */ = {
 			isa = PBXGroup;
 			children = (
+				788AEAA82575846600A325AA /* DestinationGroup */,
 				78A6044F2569F1850085DE4A /* Category */,
 				78EA3C702564AC19008F1D61 /* DiscoverView.swift */,
 				78A6041F256870130085DE4A /* TrendingCategoriesView.swift */,
@@ -340,6 +351,7 @@
 				78A6041B25686FE60085DE4A /* DiscoverCategoriesView.swift in Sources */,
 				78A60420256870130085DE4A /* TrendingCategoriesView.swift in Sources */,
 				78A6041125686E580085DE4A /* PopularDestinationsView.swift in Sources */,
+				788AEAAA2575847E00A325AA /* DestinationHeaderContainer.swift in Sources */,
 				78A604662569F2B50085DE4A /* Place.swift in Sources */,
 				78A6041625686F710085DE4A /* PopularRestaurantsView.swift in Sources */,
 				78EA3C712564AC19008F1D61 /* DiscoverView.swift in Sources */,
