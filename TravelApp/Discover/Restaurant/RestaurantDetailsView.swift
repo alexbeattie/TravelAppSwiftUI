@@ -33,6 +33,7 @@ struct Post: Codable, Hashable {
 }
 
 class RestaurantDetailsViewModel:ObservableObject {
+   
     @Published var isLoading = true
     @Published var details: RestaurantDetails?
     
@@ -49,7 +50,7 @@ class RestaurantDetailsViewModel:ObservableObject {
                 
                 do {
                     self.details = try JSONDecoder().decode(RestaurantDetails.self, from: data)
-                    print(self.details?.reviews)
+//                    print(self.details?.reviews)
                 } catch {
                     print("you fucked up")
                 }
@@ -61,6 +62,7 @@ class RestaurantDetailsViewModel:ObservableObject {
     
 }
 struct RestaurantDetailsView: View {
+    
     @ObservedObject var vm = RestaurantDetailsViewModel()
     let restaurant: Restaurant
     var body: some View {
@@ -83,9 +85,15 @@ struct RestaurantDetailsView: View {
                         }
                     }.padding()
                     Spacer()
-                    Text("ssssssm photos").foregroundColor(.white)
-                        .font(.system(size: 18, weight: .bold))
-                        .frame(width: 80, height: 100).multilineTextAlignment(.trailing)
+                    NavigationLink(
+                        destination: RestaurantPhotosView(),
+                        label: {
+                            Text("ssssssm photos").foregroundColor(.white)
+                                .font(.system(size: 18, weight: .bold))
+                                .frame(width: 80, height: 100).multilineTextAlignment(.trailing)
+
+                        })
+                    
                 }
                 
             }
