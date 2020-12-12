@@ -37,28 +37,56 @@ struct RestaurantPhotosView: View {
         UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributes, for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributes, for: .normal)
     }
+    @State var shouldShowFullScreenModal = false
+    @State var selectedPhotoIndex = 0
     var body: some View {
         GeometryReader { proxy in
             
+            
             ScrollView {
+
                 Picker("TEST", selection: $mode) {
                     Text("Grid").tag("grid")
                     Text("List").tag("list")
                     
                 }.pickerStyle(SegmentedPickerStyle()).padding()
 
+                Spacer()
+                    .fullScreenCover(isPresented: $shouldShowFullScreenModal, content: {
+//                        Text("this is showing12")
+                        ZStack (alignment: .topLeading) {
+                            Color.black.ignoresSafeArea()
+                            
+                            RestaurantCarouselContainer(imageUrlStrings: photoUrlStrings, selectedIndex: selectedPhotoIndex)
+                            
+                            
+                            Button(action: {
+                                
+                                shouldShowFullScreenModal.toggle()
+                            }, label: {
+                                Image(systemName: "xmark")
+                                    .font(.system(size:32, weight: .bold))
+                                    .foregroundColor(.white)
+                                    .padding()
+                            })
+                        }
+                    }).opacity(shouldShowFullScreenModal ? 1 : 0)
                 
                 if mode == "grid" {
                     
                     LazyVGrid(columns: [
                         GridItem(.adaptive(minimum: proxy.size.width / 3 - 4, maximum: 300), spacing: 2)
                         
-                        
-                        
                     ], spacing: 4, content: {
                         ForEach(photoUrlStrings, id:\.self) { urlString in
-                            KFImage(URL(string: urlString))
-                                .resizable().scaledToFill().frame(width: proxy.size.width / 3 - 3, height: proxy.size.width / 3 - 3).clipped()
+                            Button(action: {
+                                self.selectedPhotoIndex = photoUrlStrings.firstIndex(of: urlString) ?? 0
+                                shouldShowFullScreenModal.toggle()
+                            }, label: {
+//                                /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
+                                KFImage(URL(string: urlString))
+                                    .resizable().scaledToFill().frame(width: proxy.size.width / 3 - 3, height: proxy.size.width / 3 - 3).clipped()
+                            })
                         }
                     }).padding(.horizontal, 2)
                 } else {

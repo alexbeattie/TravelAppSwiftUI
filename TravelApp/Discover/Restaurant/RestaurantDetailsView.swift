@@ -25,12 +25,12 @@ struct ReviewUser: Codable, Hashable {
     let id: Int
     let username, firstName, lastName, profileImage : String
     let followers, following: Int
-    let posts: [Post]
+//    let posts: [Post]
 }
-struct Post: Codable, Hashable {
-    let title, imageUrl, views: String
-    let hashtags: [String]
-}
+//struct Post: Codable, Hashable {
+//    let title, imageUrl, views: String
+//    let hashtags: [String]
+//}
 
 class RestaurantDetailsViewModel:ObservableObject {
    
