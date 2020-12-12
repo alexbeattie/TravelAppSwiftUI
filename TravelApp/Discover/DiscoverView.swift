@@ -13,6 +13,7 @@ import SwiftUI
 
 extension Color {
     static let discoverBackground = Color(.init(white: 0.95, alpha: 1))
+    static let defaultBackground = Color("defaultBackground")
 //    static let discoverBackground = Color.blue
 }
 struct DiscoverView: View {
@@ -22,6 +23,7 @@ struct DiscoverView: View {
             .foregroundColor: UIColor.white
         ]
     }
+    @Environment (\.colorScheme) var colorScheme
     
     var body: some View {
         VStack {
@@ -53,7 +55,7 @@ struct DiscoverView: View {
                             PopularRestaurantsView()
                             
                             TrendingCategoriesView()
-                        }.background(Color.discoverBackground)
+                        }.background(Color.defaultBackground)
                         .cornerRadius(16)
                         .padding(.top, 32)
                         
@@ -68,6 +70,9 @@ struct DiscoverView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         DiscoverView()
+            .colorScheme(.dark)
+        DiscoverView()
+            .colorScheme(.light)
     }
 }
 

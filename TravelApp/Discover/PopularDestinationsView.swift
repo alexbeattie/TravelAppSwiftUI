@@ -233,11 +233,13 @@ struct PopularDestinationTile: View {
 
 struct PopularDestinationsView_Previews: PreviewProvider {
     static var previews: some View {
+        PopularDestinationsView()
+            .colorScheme(.dark)
         NavigationView {
             PopularDestinationDetailsView(destination: .init(name: "Paris", country: "France", imageName: "eiffel_tower", latitude: 48.859565, longitude: 2.353235))
 //            PopularDestinationDetailsView(destination: .init(name: "Tokyo", country: "Japan", imageName: "japan", latitude: 35.679693, longitude: 139.771913))
         }
         DiscoverView()
-        PopularDestinationsView()
+       
     }
 }
